@@ -9,6 +9,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -78,7 +79,7 @@ namespace MyMvxSimple.UWP
                 // configuring the new page by passing required information as a navigation
                 // parameter
                 //rootFrame.Navigate(typeof(MainPage), e.Arguments);
-
+                rootFrame.Navigated += RootFrame_Navigated;
                 var setup = new Setup(rootFrame);
                 setup.Initialize();
                 var start = Mvx.Resolve<IMvxAppStart>();
@@ -86,6 +87,22 @@ namespace MyMvxSimple.UWP
             }
             // Ensure the current window is active
             Window.Current.Activate();
+        }
+
+        private void RootFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            var rootFrame = Window.Current.Content as Frame;
+            SystemNavigationManager.GetForCurrentView().BackRequested += App_BackRequested;
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = rootFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+        }
+
+        private void App_BackRequested(object sender, BackRequestedEventArgs e)
+        {
+            var rootFrame = Window.Current.Content as Frame;
+            SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = rootFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+            if (rootFrame.CanGoBack)
+                rootFrame.GoBack();
+            e.Handled = true;
         }
 
         /// <summary>
