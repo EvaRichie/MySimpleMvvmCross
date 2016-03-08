@@ -39,15 +39,20 @@ namespace MyMvxSimple.Core.ViewModels
             set { _IsVisible = value; RaisePropertyChanged(() => IsVisible); }
         }
 
-        public ICommand VisibleCommand
+        //private MvxCommand _SetVisibleCommand;
+        public ICommand SetVisibleCommand
         {
             get
             {
-                return new MvxCommand(() =>
-                {
-                    _IsVisible = !_IsVisible;
-                });
+                //_SetVisibleCommand = _SetVisibleCommand ?? new MvxCommand(DoSetVisible);
+                //return _SetVisibleCommand;
+                return new MvxCommand(DoSetVisible);
             }
+        }
+
+        private void DoSetVisible()
+        {
+            IsVisible = !IsVisible;
         }
     }
 }

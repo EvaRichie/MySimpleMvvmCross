@@ -1,0 +1,21 @@
+﻿<mvxView:MvxWpfView
+    x:Class="MyMvxSimple.WPF.Views.FirstView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:MyMvxSimple.WPF.Views"
+    xmlns:mvxView="clr-namespace:MvvmCross.Wpf.Views;assembly=MvvmCross.Wpf"
+    mc:Ignorable="d">
+    
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox Text="{Binding FirstName, Mode=TwoWay}"/>
+            <TextBox Text="{Binding LastName, Mode=TwoWay}"/>
+            <TextBlock Text="{Binding FullName, Mode=OneWay}"/>
+
+            <CheckBox Content="Set Visible" Command="{Binding SetVisibleCommand}"/>
+            <Ellipse Width="90" Height="90" Fill="Gray" Visibility="{Binding IsVisible, Converter={StaticResource M_BoolVisibilityCvt}}"/>
+        </StackPanel>
+    </Grid>
+</mvxView:MvxWpfView>
