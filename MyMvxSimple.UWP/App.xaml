@@ -7,6 +7,18 @@
     RequestedTheme="Dark">
 
     <Application.Resources>
-        <cvt:ManageBoolVisibilityConverter x:Key="M_BoolVisibilityCvt"/>
+        <!--MvvmCross Converter not working right now-->
+        <!--<cvt:ManageBoolVisibilityConverter x:Key="M_BoolVisibilityCvt"/>-->
+        <cvt:WhenValueConverter x:Key="WhenValueCvt">
+            <cvt:WhenValueConverter.When>
+                <x:Boolean>true</x:Boolean>
+            </cvt:WhenValueConverter.When>
+            <cvt:WhenValueConverter.Value>
+                <Visibility>Visible</Visibility>
+            </cvt:WhenValueConverter.Value>
+            <cvt:WhenValueConverter.Others>
+                <Visibility>Collapsed</Visibility>
+            </cvt:WhenValueConverter.Others>
+        </cvt:WhenValueConverter>
     </Application.Resources>
 </Application>
