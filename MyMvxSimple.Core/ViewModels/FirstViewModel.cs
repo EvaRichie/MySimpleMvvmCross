@@ -48,5 +48,15 @@ namespace MyMvxSimple.Core.ViewModels
         {
             IsVisible = !IsVisible;
         }
+
+        public ICommand NavigateToSecoundCommand
+        {
+            get { return new MvxCommand(DoNavigation); }
+        }
+
+        private void DoNavigation()
+        {
+            ShowViewModel<SecoundViewModel>();
+        }
     }
 }

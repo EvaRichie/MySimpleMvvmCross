@@ -16,6 +16,8 @@
 
             <CheckBox Content="Set Visible" Command="{Binding SetVisibleCommand}"/>
             <Ellipse Width="90" Height="90" Fill="Gray" Visibility="{Binding IsVisible, Converter={StaticResource M_BoolVisibilityCvt}}"/>
+
+            <Button Content="Go to secound page" Command="{Binding NavigateToSecoundCommand}"/>
         </StackPanel>
     </Grid>
 </mvxView:MvxWpfView>
