@@ -3,6 +3,10 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:MyMvxSimple.UWP"
-    RequestedTheme="Light">
+    xmlns:cvt="using:MyMvxSimple.UWP.Converters"
+    RequestedTheme="Dark">
 
+    <Application.Resources>
+        <cvt:ManageBoolVisibilityConverter x:Key="M_BoolVisibilityCvt"/>
+    </Application.Resources>
 </Application>

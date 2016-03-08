@@ -13,6 +13,9 @@
             <TextBox Text="{Binding FirstName, Mode=TwoWay}"/>
             <TextBox Text="{Binding LastName, Mode=TwoWay}"/>
             <TextBlock Text="{Binding FullName, Mode=OneWay}"/>
+
+            <CheckBox Content="Set Visible" Command="{Binding SetVisibleCommand}"/>
+            <Ellipse Width="90" Height="90" Fill="Gray" Visibility="{Binding IsVisible, Converter={StaticResource M_BoolVisibilityCvt}}"/>
         </StackPanel>
     </Grid>
 </mvxView:MvxWindowsPage>

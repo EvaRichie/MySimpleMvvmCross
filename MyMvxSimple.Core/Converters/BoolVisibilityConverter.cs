@@ -15,8 +15,14 @@ namespace MyMvxSimple.Core.Converters
         protected override object Convert(bool value, Type targetType, object parameter, CultureInfo culture)
         {
             var visibility = value == true ? MvxVisibility.Visible : MvxVisibility.Collapsed;
-            var nativeVisbility = Mvx.Resolve<IMvxNativeVisibility>();
-            return nativeVisbility.ToNative(visibility);
+            var canResolve = Mvx.CanResolve<IMvxNativeVisibility>();
+            if (canResolve)
+            {
+                var nativeVisbility = Mvx.Resolve<IMvxNativeVisibility>();
+                return nativeVisbility.ToNative(visibility);
+            }
+            else
+                return null;
         }
     }
 }
