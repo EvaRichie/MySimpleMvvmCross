@@ -16,8 +16,8 @@
 
             <CheckBox Content="Set Visible" Command="{Binding SetVisibleCommand}"/>
             <!--MvvmCross not working right now.-->
-            <!--<Ellipse Width="90" Height="90" Fill="Gray" Visibility="{Binding IsVisible, Converter={StaticResource M_BoolVisibilityCvt}}"/>-->
-            <Ellipse Width="90" Height="90" Fill="Gray" Visibility="{Binding IsVisible, Converter={StaticResource WhenValueCvt}}"/>
+            <Ellipse Width="90" Height="90" Fill="Gray" Visibility="{Binding IsVisible, Converter={StaticResource M_BoolVisibilityCvt}}"/>
+            <!--<Ellipse Width="90" Height="90" Fill="Gray" Visibility="{Binding IsVisible, Converter={StaticResource WhenValueCvt}}"/>-->
 
             <Button Content="Go to secound view" Command="{Binding NavigateToSecoundCommand}"/>
         </StackPanel>

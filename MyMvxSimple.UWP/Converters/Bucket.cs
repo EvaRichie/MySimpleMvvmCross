@@ -11,29 +11,29 @@ using Windows.UI.Xaml.Data;
 namespace MyMvxSimple.UWP.Converters
 {
     //Currently not working...LOl
-    //public class ManageBoolVisibilityConverter : MvxNativeValueConverter<BoolVisibilityConverter>
-    //{
-    //}
-
-    public class ManageBoolVisibilityConverter : IValueConverter
+    public class ManageBoolVisibilityConverter : MvxNativeValueConverter<BoolVisibilityConverter>
     {
-        public object Convert(object value, Type targetType, object parameter, string language)
-        {
-            if (value is bool && bool.Parse(value.ToString()))
-            {
-                return Visibility.Visible;
-            }
-            else
-            {
-                return Visibility.Collapsed;
-            }
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
-            throw new NotImplementedException();
-        }
     }
+
+    //public class ManageBoolVisibilityConverter : IValueConverter
+    //{
+    //    public object Convert(object value, Type targetType, object parameter, string language)
+    //    {
+    //        if (value is bool && bool.Parse(value.ToString()))
+    //        {
+    //            return Visibility.Visible;
+    //        }
+    //        else
+    //        {
+    //            return Visibility.Collapsed;
+    //        }
+    //    }
+
+    //    public object ConvertBack(object value, Type targetType, object parameter, string language)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 
     public class WhenValueConverter : IValueConverter
     {

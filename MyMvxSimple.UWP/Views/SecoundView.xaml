@@ -9,6 +9,26 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="{Binding PageTitle}" Foreground="White" Style="{ThemeResource HeaderTextBlockStyle}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="{Binding PageTitle}" Foreground="Red"/>
+        <!--<TextBox Grid.Row="1" Text="{Binding SearchKeyword, Mode=TwoWay}"/>
+        <ListView Grid.Row="2" ItemsSource="{Binding SearchResults}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="{Binding volumeInfo.title}"/>
+                        <TextBlock Grid.Row="1" Text="{Binding volumeInfo.subtitle}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>-->
     </Grid>
 </mvxView:MvxWindowsPage>
