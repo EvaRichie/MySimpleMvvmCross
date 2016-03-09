@@ -15,7 +15,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="{Binding PageTitle}" Foreground="Red"/>
-        <!--<TextBox Grid.Row="1" Text="{Binding SearchKeyword, Mode=TwoWay}"/>
+        <TextBox Grid.Row="1" Text="{Binding SearchKeyword, Mode=TwoWay}"/>
         <ListView Grid.Row="2" ItemsSource="{Binding SearchResults}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -29,6 +29,6 @@
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>-->
+        </ListView>
     </Grid>
 </mvxView:MvxWindowsPage>
