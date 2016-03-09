@@ -44,12 +44,7 @@ namespace MyMvxSimple.Core.ViewModels
 
         private void Update()
         {
-            _bookService.StartSearchAsync(SearchKeyword, result => SearchResults = result.items, error => { });
+            _bookService.StartSearchAsync<RootObject>(SearchKeyword, success => { SearchResults = success.items; }, fail => { });
         }
-
-        //public SecoundViewModel()
-        //{
-        //    _PageTitle = "This is secound page";
-        //}
     }
 }

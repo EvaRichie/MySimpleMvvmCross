@@ -19,38 +19,30 @@ namespace MyMvxSimple.Core.Services
             _jsonCvt = jsonCvt;
         }
 
-        //public async Task<T> DownloadAsStringAsync<T>(string requestUriString, Action<T> success, Action<Exception> error)
-        //{
-        //    T result = default(T);
-        //    try
-        //    {
-        //        using (var httpClient = new HttpClient(new NativeMessageHandler()))
-        //        using (var response = await httpClient.GetAsync(requestUriString))
-        //        {
-        //            response.EnsureSuccessStatusCode();
-        //            var resultStr = await response.Content.ReadAsStringAsync();
-        //            result = Deserialize<T>(resultStr);
-        //            //if (success != null)
-        //            //{
-        //            //    var result = Deserialize<T>(resultStr);
-        //            //    success(result);
-        //            //}
-        //            return result;
-        //        }
-        //    }
-        //    catch (HttpRequestException httpEx)
-        //    {
-        //        //error(httpEx);
-        //        return result;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        //error(ex);
-        //        return result;
-        //    }
-        //}
+        public async Task<object> DownloadAsync<T>(string requestUriString)
+        {
+            try
+            {
+                using (var httpClient = new HttpClient(new NativeMessageHandler()))
+                using (var response = await httpClient.GetAsync(requestUriString))
+                {
+                    response.EnsureSuccessStatusCode();
+                    var resultStr = await response.Content.ReadAsStringAsync();
+                    var jsonObj = Deserialize<T>(resultStr);
+                    return jsonObj;
+                }
+            }
+            catch (HttpRequestException httpEx)
+            {
+                return httpEx;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
 
-        public async void DownloadAsStringAsync<T>(string requestUriString, Action<T> success, Action<Exception> error)
+        public async void Download<T>(string requestUriString, Action<T> success, Action<Exception> error)
         {
             try
             {

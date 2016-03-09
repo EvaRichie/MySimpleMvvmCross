@@ -34,10 +34,24 @@ namespace MyMvxSimple.Core.Services
             _httpClientService = httpClientService;
         }
 
-        public void StartSearchAsync(string whatFor, Action<RootObject> success, Action<Exception> error)
+        public void StartSearch(string whatFor, Action<RootObject> success, Action<Exception> error)
         {
             var address = string.Format("https://www.googleapis.com/books/v1/volumes?q={0}", Uri.EscapeUriString(whatFor));
-            _httpClientService.DownloadAsStringAsync(address, success, error);
+            _httpClientService.Download(address, success, error);
+        }
+
+        public async void StartSearchAsync<T>(string whatFor, Action<T> successAction, Action<Exception> exceptionAction)
+        {
+            var address = string.Format("https://www.googleapis.com/books/v1/volumes?q={0}", Uri.EscapeUriString(whatFor));
+            var asyncResult = await _httpClientService.DownloadAsync<T>(address);
+            if (asyncResult != null && asyncResult is T)
+            {
+                successAction((T)asyncResult);
+            }
+            else
+            {
+                exceptionAction((Exception)asyncResult);
+            }
         }
     }
 }

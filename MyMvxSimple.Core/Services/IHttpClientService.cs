@@ -8,7 +8,7 @@ namespace MyMvxSimple.Core.Services
 {
     public interface IHttpClientService
     {
-        //Task<T> DownloadAsStringAsync<T>(string requestUriString, out Exception error);
-        void DownloadAsStringAsync<T>(string requestUriString, Action<T> success, Action<Exception> error);
+        void Download<T>(string requestUriString, Action<T> success, Action<Exception> error);
+        Task<object> DownloadAsync<T>(string requestUriString);
     }
 }

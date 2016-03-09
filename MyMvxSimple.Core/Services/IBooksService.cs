@@ -8,6 +8,7 @@ namespace MyMvxSimple.Core.Services
 {
     public interface IBooksService
     {
-        void StartSearchAsync(string whatFor, Action<RootObject> success, Action<Exception> error);
+        void StartSearch(string whatFor, Action<RootObject> success, Action<Exception> error);
+        void StartSearchAsync<T>(string whatFor, Action<T> successAction, Action<Exception> exceptionAction);
     }
 }
