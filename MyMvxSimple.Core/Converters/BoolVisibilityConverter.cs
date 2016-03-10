@@ -14,15 +14,24 @@ namespace MyMvxSimple.Core.Converters
     {
         protected override object Convert(bool value, Type targetType, object parameter, CultureInfo culture)
         {
-            var visibility = value == true ? MvxVisibility.Visible : MvxVisibility.Collapsed;
-            var canResolve = Mvx.CanResolve<IMvxNativeVisibility>();
-            if (canResolve)
+            if(parameter == null || parameter.ToString() != "reverse")
             {
-                var nativeVisbility = Mvx.Resolve<IMvxNativeVisibility>();
-                return nativeVisbility.ToNative(visibility);
+                var visibility = value == true ? MvxVisibility.Visible : MvxVisibility.Collapsed;
+                var canResolve = Mvx.CanResolve<IMvxNativeVisibility>();
+                if (canResolve)
+                    return Mvx.Resolve<IMvxNativeVisibility>().ToNative(visibility);
+                else
+                    return null;
             }
             else
-                return null;
+            {
+                var visibility = value == false ? MvxVisibility.Collapsed : MvxVisibility.Visible;
+                var canResolve = Mvx.CanResolve<IMvxNativeVisibility>();
+                if (canResolve)
+                    return Mvx.Resolve<IMvxNativeVisibility>().ToNative(visibility);
+                else
+                    return null;
+            }
         }
     }
 }

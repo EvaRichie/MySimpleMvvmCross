@@ -31,5 +31,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <ProgressBar Grid.Row="1" Grid.ColumnSpan="2" IsIndeterminate="{Binding IsLoading}" Visibility="{Binding IsLoading, Converter={StaticResource M_BoolVisibilityCvt}, ConverterParameter=reverse}"/>
     </Grid>
 </mvxView:MvxWpfView>

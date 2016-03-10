@@ -9,6 +9,7 @@
     <Application.Resources>
         <!--MvvmCross Converter not working right now-->
         <cvt:ManageBoolVisibilityConverter x:Key="M_BoolVisibilityCvt"/>
+        <cvt:ManageReverseBoolConverter x:Key="M_ReverseBoolCvt"/>
         <cvt:WhenValueConverter x:Key="WhenValueCvt">
             <cvt:WhenValueConverter.When>
                 <x:Boolean>true</x:Boolean>

@@ -63,11 +63,12 @@ namespace MyMvxSimple.Core.ViewModels
         {
             lock (_lockObj)
             {
+                IsLoading = !IsLoading;
                 System.Diagnostics.Debug.WriteLine("Before " + DateTime.Now.ToLocalTime().ToString());
                 Task.Delay(TimeSpan.FromSeconds(1)).ContinueWith((t, o) =>
                 {
                     System.Diagnostics.Debug.WriteLine("Get async download http" + DateTime.Now.ToLocalTime().ToString());
-                    _bookService.StartSearchAsync<RootObject>(SearchKeyword, success => { SearchResults = success.items; }, fail => { });
+                    _bookService.StartSearchAsync<RootObject>(SearchKeyword, success => { SearchResults = success.items; IsLoading = !IsLoading; }, fail => { IsLoading = !IsLoading; });
                 }, null);
             }
         }

@@ -30,5 +30,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <ProgressRing Grid.Row="1" Grid.RowSpan="2" IsActive="{Binding IsLoading}" Visibility="{Binding IsLoading, Converter={StaticResource M_BoolVisibilityCvt}, ConverterParameter=reverse}"/>
     </Grid>
 </mvxView:MvxWindowsPage>
