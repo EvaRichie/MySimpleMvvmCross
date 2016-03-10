@@ -106,6 +106,9 @@
     <Compile Include="Bootstrap\JsonPluginBootstrap.cs" />
     <Compile Include="Bootstrap\ResourceLoaderPluginBootstrap.cs" />
     <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
+    <Compile Include="Controls\ExtendTitleBar.xaml.cs">
+      <DependentUpon>ExtendTitleBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\Bucket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
@@ -136,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\ExtendTitleBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\FirstView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

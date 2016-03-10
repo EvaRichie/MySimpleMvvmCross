@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using MvvmCross.WindowsUWP.Views;
 using MyMvxSimple.Core.ViewModels;
+using MyMvxSimple.UWP.Controls;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -33,6 +34,21 @@ namespace MyMvxSimple.UWP.Views
         public SecoundView()
         {
             this.InitializeComponent();
+            this.Loaded += SecoundView_Loaded;
+        }
+
+        private void SecoundView_Loaded(object sender, RoutedEventArgs e)
+        {
+            var extendTitleBar = new ExtendTitleBar();
+            extendTitleBar.CoreTitleBarTitle = "TEMPSL";
+
+            UIElement mainContent = this.Content;
+            this.Content = null;
+            extendTitleBar.SetPageContent(mainContent);
+            this.Content = extendTitleBar;
+
+            extendTitleBar.EnableControlsInTitleBar();
+        //https://github.com/durow/TestArea/blob/master/UWPTest/TitleBarTest/MainPage.xaml.cs
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
