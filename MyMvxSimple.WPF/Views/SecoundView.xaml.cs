@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MvvmCross.Wpf.Views;
 using MyMvxSimple.Core.ViewModels;
+using System.Windows.Shell;
+using System.ComponentModel;
 
 namespace MyMvxSimple.WPF.Views
 {
@@ -36,6 +38,14 @@ namespace MyMvxSimple.WPF.Views
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             ViewModel.SearchKeyword = (sender as TextBox).Text;
+        }
+
+        private void ProgressBar_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (ViewModel.IsLoading)
+                Application.Current.MainWindow.TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Indeterminate;
+            else
+                Application.Current.MainWindow.TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
         }
     }
 }

@@ -10,6 +10,7 @@
     "MvvmCross.Core": "4.0.0",
     "MvvmCross.Platform": "4.0.0",
     "MvvmCross.Plugin.Color": "4.0.0",
+    "MvvMCross.Plugin.Location": "4.0.0",
     "MvvmCross.Plugin.Json": "4.0.0",
     "MvvmCross.Plugin.JsonLocalization": "4.0.0",
     "MvvmCross.Plugin.Visibility": "4.0.0",

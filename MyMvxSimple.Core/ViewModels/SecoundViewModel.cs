@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MyMvxSimple.Core.ViewModels
@@ -11,14 +12,17 @@ namespace MyMvxSimple.Core.ViewModels
     public class SecoundViewModel : MvxViewModel
     {
         private readonly IBooksService _bookService;
-        private readonly object _lockObj = new object();
 
         private bool _IsLoading;
 
         public bool IsLoading
         {
             get { return _IsLoading; }
-            set { _IsLoading = value; RaisePropertyChanged(() => IsLoading); }
+            set
+            {
+                _IsLoading = value;
+                RaisePropertyChanged(() => IsLoading);
+            }
         }
 
         private float _DelaySecounds;
@@ -61,16 +65,13 @@ namespace MyMvxSimple.Core.ViewModels
 
         private void Update()
         {
-            lock (_lockObj)
+            if (IsLoading)
+                return;
+            Task.Delay(TimeSpan.FromSeconds(1.0)).ContinueWith((t, o) =>
             {
-                IsLoading = !IsLoading;
-                System.Diagnostics.Debug.WriteLine("Before " + DateTime.Now.ToLocalTime().ToString());
-                Task.Delay(TimeSpan.FromSeconds(1)).ContinueWith((t, o) =>
-                {
-                    System.Diagnostics.Debug.WriteLine("Get async download http" + DateTime.Now.ToLocalTime().ToString());
-                    _bookService.StartSearchAsync<RootObject>(SearchKeyword, success => { SearchResults = success.items; IsLoading = !IsLoading; }, fail => { IsLoading = !IsLoading; });
-                }, null);
-            }
+                IsLoading = true;
+                _bookService.StartSearchAsync<RootObject>(SearchKeyword, success => { SearchResults = success.items; IsLoading = false; }, fail => { SearchResults = null; IsLoading = false; });
+            }, null);
         }
     }
 }
