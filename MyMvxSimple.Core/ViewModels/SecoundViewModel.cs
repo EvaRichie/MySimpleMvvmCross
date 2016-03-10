@@ -10,6 +10,25 @@ namespace MyMvxSimple.Core.ViewModels
 {
     public class SecoundViewModel : MvxViewModel
     {
+        private readonly IBooksService _bookService;
+        private readonly object _lockObj = new object();
+
+        private bool _IsLoading;
+
+        public bool IsLoading
+        {
+            get { return _IsLoading; }
+            set { _IsLoading = value; RaisePropertyChanged(() => IsLoading); }
+        }
+
+        private float _DelaySecounds;
+
+        public float DelaySecounds
+        {
+            get { return _DelaySecounds; }
+            set { _DelaySecounds = value; RaisePropertyChanged(() => DelaySecounds); }
+        }
+
         private string _PageTitle;
 
         public string PageTitle
@@ -34,8 +53,6 @@ namespace MyMvxSimple.Core.ViewModels
             set { _SearchResults = value; RaisePropertyChanged(() => SearchResults); }
         }
 
-        private readonly IBooksService _bookService;
-
         public SecoundViewModel(IBooksService bookService)
         {
             _PageTitle = "This is secound page";
@@ -44,7 +61,15 @@ namespace MyMvxSimple.Core.ViewModels
 
         private void Update()
         {
-            _bookService.StartSearchAsync<RootObject>(SearchKeyword, success => { SearchResults = success.items; }, fail => { });
+            lock (_lockObj)
+            {
+                System.Diagnostics.Debug.WriteLine("Before " + DateTime.Now.ToLocalTime().ToString());
+                Task.Delay(TimeSpan.FromSeconds(1)).ContinueWith((t, o) =>
+                {
+                    System.Diagnostics.Debug.WriteLine("Get async download http" + DateTime.Now.ToLocalTime().ToString());
+                    _bookService.StartSearchAsync<RootObject>(SearchKeyword, success => { SearchResults = success.items; }, fail => { });
+                }, null);
+            }
         }
     }
 }
