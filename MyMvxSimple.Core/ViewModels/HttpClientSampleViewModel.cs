@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyMvxSimple.Core.ViewModels
 {
-    public class SecoundViewModel : MvxViewModel
+    public class HttpClientSampleViewModel : MvxViewModel
     {
         private readonly IBooksService _bookService;
 
@@ -57,7 +57,7 @@ namespace MyMvxSimple.Core.ViewModels
             set { _SearchResults = value; RaisePropertyChanged(() => SearchResults); }
         }
 
-        public SecoundViewModel(IBooksService bookService)
+        public HttpClientSampleViewModel(IBooksService bookService)
         {
             _PageTitle = "This is secound page";
             _bookService = bookService;

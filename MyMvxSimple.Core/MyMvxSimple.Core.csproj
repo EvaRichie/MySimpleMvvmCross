@@ -40,15 +40,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccessInfo.cs" />
     <Compile Include="Services\BookService.cs" />
+    <Compile Include="Services\DataService.cs" />
     <Compile Include="Services\Epub.cs" />
     <Compile Include="Services\HttpClientService.cs" />
     <Compile Include="Services\IBooksService.cs" />
+    <Compile Include="Services\IDataService.cs" />
     <Compile Include="Services\IHttpClientService.cs" />
+    <Compile Include="Services\IKittenService.cs" />
     <Compile Include="Services\ILocationService.cs" />
     <Compile Include="Services\ImageLinks.cs" />
     <Compile Include="Services\IndustryIdentifier.cs" />
     <Compile Include="Services\ISimpleRestService.cs" />
     <Compile Include="Services\Item.cs" />
+    <Compile Include="Services\Kitten.cs" />
+    <Compile Include="Services\KittenService.cs" />
     <Compile Include="Services\ListPrice.cs" />
     <Compile Include="Services\ListPrice2.cs" />
     <Compile Include="Services\LocationHub.cs" />
@@ -62,9 +67,10 @@
     <Compile Include="Services\SearchInfo.cs" />
     <Compile Include="Services\SimpleRestService.cs" />
     <Compile Include="Services\VolumeInfo.cs" />
-    <Compile Include="ViewModels\FirstViewModel.cs" />
-    <Compile Include="ViewModels\FourthViewModel.cs" />
-    <Compile Include="ViewModels\SecoundViewModel.cs" />
+    <Compile Include="ViewModels\BindingSampleViewModel.cs" />
+    <Compile Include="ViewModels\LocationHubSampleViewModel.cs" />
+    <Compile Include="ViewModels\HttpClientSampleViewModel.cs" />
+    <Compile Include="ViewModels\SqliteSampleViewModel.cs" />
     <Compile Include="ViewModels\ThirdViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

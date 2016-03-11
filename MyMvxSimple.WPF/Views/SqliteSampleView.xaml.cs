@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MvvmCross.Wpf.Views;
+using MyMvxSimple.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +14,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MvvmCross.Wpf.Views;
 
 namespace MyMvxSimple.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for FirstView.xaml
+    /// Interaction logic for SqliteSampleView.xaml
     /// </summary>
-    public partial class FirstView : MvxWpfView
+    public partial class SqliteSampleView : MvxWpfView
     {
-        public FirstView()
+        public new SqliteSampleViewModel ViewModel
+        {
+            get { return (SqliteSampleViewModel)base.ViewModel; }
+            set { base.ViewModel = value; }
+        }
+
+        public SqliteSampleView()
         {
             InitializeComponent();
         }

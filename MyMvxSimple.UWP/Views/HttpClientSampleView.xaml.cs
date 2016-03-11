@@ -23,15 +23,15 @@ namespace MyMvxSimple.UWP.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SecoundView : MvxWindowsPage
+    public sealed partial class HttpClientSampleView : MvxWindowsPage
     {
-        public new SecoundViewModel ViewModel
+        public new HttpClientSampleViewModel ViewModel
         {
-            get { return (SecoundViewModel)base.ViewModel; }
+            get { return (HttpClientSampleViewModel)base.ViewModel; }
             set { base.ViewModel = value; }
         }
 
-        public SecoundView()
+        public HttpClientSampleView()
         {
             this.InitializeComponent();
         }

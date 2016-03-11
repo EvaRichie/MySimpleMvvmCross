@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyMvxSimple.Core.ViewModels
 {
-    public class FourthViewModel : MvxViewModel
+    public class LocationHubSampleViewModel : MvxViewModel
     {
         private double _Lat;
 
@@ -29,7 +29,7 @@ namespace MyMvxSimple.Core.ViewModels
 
         private MvxSubscriptionToken _token;
 
-        public FourthViewModel(ILocationService location, IMvxMessenger messenger)
+        public LocationHubSampleViewModel(ILocationService location, IMvxMessenger messenger)
         {
             _token = messenger.Subscribe<LocationMessage>(OnLocationMessage);
         }

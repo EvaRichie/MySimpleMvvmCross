@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace MyMvxSimple.Core.ViewModels
 {
-    public class FirstViewModel : MvxViewModel
+    public class BindingSampleViewModel : MvxViewModel
     {
         private string _firstName;
 
@@ -57,7 +57,7 @@ namespace MyMvxSimple.Core.ViewModels
 
         private void DoNavigation()
         {
-            ShowViewModel<SecoundViewModel>();
+            ShowViewModel<SqliteSampleViewModel>();
         }
     }
 }

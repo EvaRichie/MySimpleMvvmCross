@@ -1,5 +1,5 @@
 ﻿<mvxView:MvxWpfView
-    x:Class="MyMvxSimple.WPF.Views.SecoundView"
+    x:Class="MyMvxSimple.WPF.Views.HttpClientSampleView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 

@@ -22,15 +22,15 @@ namespace MyMvxSimple.WPF.Views
     /// <summary>
     /// Interaction logic for FirstView.xaml
     /// </summary>
-    public partial class SecoundView : MvxWpfView
+    public partial class HttpClientSampleView : MvxWpfView
     {
-        public new SecoundViewModel ViewModel
+        public new HttpClientSampleViewModel ViewModel
         {
-            get { return (SecoundViewModel)base.ViewModel; }
+            get { return (HttpClientSampleViewModel)base.ViewModel; }
             set { base.ViewModel = value; }
         }
 
-        public SecoundView()
+        public HttpClientSampleView()
         {
             InitializeComponent();
         }
