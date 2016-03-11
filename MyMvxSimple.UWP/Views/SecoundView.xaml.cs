@@ -34,21 +34,6 @@ namespace MyMvxSimple.UWP.Views
         public SecoundView()
         {
             this.InitializeComponent();
-            this.Loaded += SecoundView_Loaded;
-        }
-
-        private void SecoundView_Loaded(object sender, RoutedEventArgs e)
-        {
-            var extendTitleBar = new ExtendTitleBar();
-            extendTitleBar.CoreTitleBarTitle = "TEMPSL";
-
-            UIElement mainContent = this.Content;
-            this.Content = null;
-            extendTitleBar.SetPageContent(mainContent);
-            this.Content = extendTitleBar;
-
-            extendTitleBar.EnableControlsInTitleBar();
-        //https://github.com/durow/TestArea/blob/master/UWPTest/TitleBarTest/MainPage.xaml.cs
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
