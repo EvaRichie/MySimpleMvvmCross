@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MvvmCross.Plugins.Sqlite;
 using SQLite.Net;
+using MyMvxSimple.Core.Services.DataStore;
 
 namespace MyMvxSimple.Core.Services
 {
@@ -12,14 +13,14 @@ namespace MyMvxSimple.Core.Services
     {
         private readonly string databaseName = "Kitten.sqlite";
         private readonly SQLiteConnection _connection;
-        private readonly IMvxSqliteConnectionFactory _sqlConn;
+        private readonly IMvxSqliteConnectionFactory _sqlConnFac;
 
         public DataService(IMvxSqliteConnectionFactory sqlConnFac)
         {
-            _sqlConn = sqlConnFac;
-            var sqlConn = _sqlConn.GetConnection(databaseName);
+            _sqlConnFac = sqlConnFac;
+            var sqlConn = _sqlConnFac.GetConnection(databaseName);
             var config = new SqLiteConfig(databaseName);
-            _connection = _sqlConn.GetConnection(config);
+            _connection = _sqlConnFac.GetConnection(config);
             _connection.CreateTable<Kitten>();
         }
 

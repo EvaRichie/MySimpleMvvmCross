@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMvxSimple.Core.Services
+namespace MyMvxSimple.Core.Services.DataStore
 {
     public class LocationMessage : MvxMessage
     {

@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Navigation;
 using MvvmCross.WindowsUWP.Views;
 using MyMvxSimple.Core.ViewModels;
 using Windows.ApplicationModel.Core;
+using MyMvxSimple.UWP.Helpers;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -34,6 +35,32 @@ namespace MyMvxSimple.UWP.Views
         public BindingSampleView()
         {
             this.InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var adapters = AdaptersHelper.GetAdapters();
+            System.Diagnostics.Debug.WriteLine(adapters?.First().Name);
+            System.Diagnostics.Debug.WriteLine(adapters?.First().MAC);
+            System.Diagnostics.Debug.WriteLine(adapters?.First().Type);
+            System.Diagnostics.Debug.WriteLine(adapters?.First().Description);
+            //IntPtr ppAvailableNetworkList = new IntPtr();
+            //Guid pInterfaceGuid = ((WLAN_INTERFACE_INFO)wlanInterfaceInfoList.InterfaceInfo[0]).InterfaceGuid;
+            //WlanGetAvailableNetworkList(ClientHandle, ref pInterfaceGuid, WlanScanInfo.WLAN_AVAILABLE_NETWORK_INCLUDE_ALL_MANUAL_HIDDEN_PROFILES, new IntPtr(), ref ppAvailableNetworkList);
+            //WLAN_AVAILABLE_NETWORK_LIST wlanAvailableNetworkList = new WLAN_AVAILABLE_NETWORK_LIST(ppAvailableNetworkList);
+            //WlanFreeMemory(ppAvailableNetworkList);
+            //for (int j = 0; j < wlanAvailableNetworkList.dwNumberOfItems; j++)
+            //{
+            //    Interop.WLAN_AVAILABLE_NETWORK network = wlanAvailableNetworkList.wlanAvailableNetwork[j];
+            //    Console.WriteLine("Available Network: ");
+            //    Console.WriteLine("SSID: " + network.dot11Ssid.ucSSID);
+            //    Console.WriteLine("Encrypted: " + network.bSecurityEnabled);
+            //    Console.WriteLine("Signal Strength: " + network.wlanSignalQuality);
+            //    Console.WriteLine("Default Authentication: " +
+            //        network.dot11DefaultAuthAlgorithm.ToString());
+            //    Console.WriteLine("Default Cipher: " + network.dot11DefaultCipherAlgorithm.ToString());
+            //    Console.WriteLine();
+            //}
         }
     }
 }

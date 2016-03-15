@@ -1,5 +1,6 @@
 ﻿using MvvmCross.Core.ViewModels;
 using MyMvxSimple.Core.Services;
+using MyMvxSimple.Core.Services.DataStore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,15 @@ namespace MyMvxSimple.Core.ViewModels
             get { return _kittens; }
             set { _kittens = value; RaisePropertyChanged(() => Kittens); }
         }
+
+        private Kitten _SelectedKitten;
+
+        public Kitten SelectedKitten
+        {
+            get { return _SelectedKitten; }
+            set { _SelectedKitten = value; RaisePropertyChanged(() => SelectedKitten); }
+        }
+
 
         private int _kittenCount;
 
@@ -65,6 +75,7 @@ namespace MyMvxSimple.Core.ViewModels
                     var kitten = _kittenService.CreateNewKitten();
                     _dataService.Insert(kitten);
                     KittenCount = _dataService.Count;
+                    Kittens = _dataService.Search("");
                 });
             }
         }

@@ -16,7 +16,7 @@
             <TextBlock Text="Sample sql"/>
             <TextBlock Text="{Binding KittenCount}"/>
             <TextBox Text="{Binding Filter, Mode=TwoWay}" ToolTipService.ToolTip="Filter here"/>
-            <ListView ItemsSource="{Binding Kittens}">
+            <ListView SelectionMode="Single" ItemsSource="{Binding Kittens}" SelectedItem="{Binding SelectedKitten, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>

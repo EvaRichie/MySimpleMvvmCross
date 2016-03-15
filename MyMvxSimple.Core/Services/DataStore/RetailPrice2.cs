@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMvxSimple.Core.Services
+namespace MyMvxSimple.Core.Services.DataStore
 {
-    public class ListPrice
+    public class RetailPrice2
     {
-        public double amount { get; set; }
+        public double amountInMicros { get; set; }
         public string currencyCode { get; set; }
     }
 }

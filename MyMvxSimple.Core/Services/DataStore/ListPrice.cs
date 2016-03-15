@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyMvxSimple.Core.Services
+namespace MyMvxSimple.Core.Services.DataStore
 {
-    public class RetailPrice
+    public class ListPrice
     {
         public double amount { get; set; }
         public string currencyCode { get; set; }

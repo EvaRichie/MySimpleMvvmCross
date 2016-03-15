@@ -20,6 +20,7 @@
             <!--<Ellipse Width="90" Height="90" Fill="Gray" Visibility="{Binding IsVisible, Converter={StaticResource WhenValueCvt}}"/>-->
 
             <Button Content="Go to secound view" Command="{Binding NavigateToSecoundCommand}"/>
+            <Button Content="Get adapter" Click="Button_Click"/>
         </StackPanel>
     </Grid>
 </mvxView:MvxWindowsPage>
