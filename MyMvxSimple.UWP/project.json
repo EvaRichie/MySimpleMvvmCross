@@ -14,6 +14,7 @@
     "MvvmCross.Plugin.JsonLocalization": "4.0.0",
     "MvvMCross.Plugin.Location": "4.0.0",
     "MvvmCross.Plugin.Messenger": "4.0.0",
+    "MvvmCross.Plugin.PictureChooser": "4.0.0",
     "MvvmCross.Plugin.SQLitePCL": "4.0.0",
     "MvvmCross.Plugin.Visibility": "4.0.0",
     "Newtonsoft.Json": "8.0.3"

@@ -1,4 +1,5 @@
 ﻿using MvvmCross.Core.ViewModels;
+using MvvmCross.Plugins.PictureChooser;
 using MyMvxSimple.Core.Services;
 using MyMvxSimple.Core.Services.DataStore;
 using System;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.IO;
 
 namespace MyMvxSimple.Core.ViewModels
 {
@@ -14,6 +16,7 @@ namespace MyMvxSimple.Core.ViewModels
     {
         private readonly IDataService _dataService;
         private readonly IKittenService _kittenService;
+        private readonly IMvxPictureChooserTask _pictureChooserTask;
 
         private string _filter;
 
@@ -48,6 +51,15 @@ namespace MyMvxSimple.Core.ViewModels
             set { _kittenCount = value; RaisePropertyChanged(() => KittenCount); }
         }
 
+        private byte[] _pictureBytes;
+
+        public byte[] PictureBytes
+        {
+            get { return _pictureBytes; }
+            set { _pictureBytes = value; RaisePropertyChanged(() => PictureBytes); }
+        }
+
+
         public ICommand FilterCommand
         {
             get
@@ -80,6 +92,26 @@ namespace MyMvxSimple.Core.ViewModels
             }
         }
 
+        public ICommand AddPictureCommand
+        {
+            get
+            {
+                return new MvxCommand(() =>
+                {
+                    _pictureChooserTask.ChoosePictureFromLibrary(400, 95, OnAvaiable, () => { });
+                });
+            }
+        }
+
+        private void OnAvaiable(Stream stream)
+        {
+            using (var mStream = new MemoryStream())
+            {
+                stream.CopyTo(mStream);
+                PictureBytes = mStream.ToArray();
+            }
+        }
+
         public SqliteSampleViewModel(IDataService dataService, IKittenService kittenService)
         {
             _dataService = dataService;
@@ -87,5 +119,14 @@ namespace MyMvxSimple.Core.ViewModels
             Kittens = _dataService.Search("");
             KittenCount = _dataService.Count;
         }
+
+        //public SqliteSampleViewModel(IDataService dataService, IKittenService kittenService, IMvxPictureChooserTask pictureChooserTask)
+        //{
+        //    _dataService = dataService;
+        //    _kittenService = kittenService;
+        //    _pictureChooserTask = pictureChooserTask;
+        //    Kittens = _dataService.Search("");
+        //    KittenCount = _dataService.Count;
+        //}
     }
 }

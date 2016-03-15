@@ -1,4 +1,5 @@
 ﻿using MvvmCross.Platform.WindowsCommon.Converters;
+using MvvmCross.Plugins.PictureChooser.WindowsStore;
 using MyMvxSimple.Core.Converters;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,10 @@ namespace MyMvxSimple.UWP.Converters
     }
 
     public class ManageReverseBoolConverter : MvxNativeValueConverter<ReverseBoolValueConverter>
+    {
+    }
+
+    public class ManageByteArrayImageConverter : MvxNativeValueConverter<MvxInMemoryImageValueConverter>
     {
     }
 
