@@ -163,13 +163,19 @@ namespace MyMvxSimple.Droid
 			public const int BindingSampleViewLayout = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int HttpClientSampleViewLayout = 2130903041;
+			public const int HttpClientListViewItemTemplate = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int SplashScreenLayout = 2130903042;
+			public const int HttpClientSampleViewLayout = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int SqliteSampleViewLayout = 2130903043;
+			public const int SplashScreenLayout = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int SqliteListViewItemTemplate = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int SqliteSampleViewLayout = 2130903045;
 			
 			static Layout()
 			{

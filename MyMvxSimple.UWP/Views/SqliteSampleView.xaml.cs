@@ -1,4 +1,5 @@
 ﻿using MvvmCross.WindowsUWP.Views;
+using MyMvxSimple.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,6 +24,12 @@ namespace MyMvxSimple.UWP.Views
     /// </summary>
     public sealed partial class SqliteSampleView : MvxWindowsPage
     {
+        public new SqliteSampleViewModel ViewModel
+        {
+            get { return (SqliteSampleViewModel)base.ViewModel; }
+            set { base.ViewModel = value; }
+        }
+
         public SqliteSampleView()
         {
             this.InitializeComponent();

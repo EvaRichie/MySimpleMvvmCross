@@ -12,7 +12,7 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
             <TextBlock Text="Sample sql"/>
             <TextBlock Text="{Binding KittenCount}"/>
-            <TextBox Text="{Binding Filter, Mode=TwoWay}" ToolTipService.ToolTip="Filter here"/>
+            <TextBox Text="{Binding Filter, Mode=TwoWay}"/>
             <Image Source="{Binding PictureBytes, Converter={StaticResource M_BytesImageCvt}}"/>
             <ListView SelectionMode="Single" ItemsSource="{Binding Kittens}" SelectedItem="{Binding SelectedKitten}">
                 <ListView.ItemTemplate>
@@ -34,8 +34,8 @@
     <Page.BottomAppBar>
         <CommandBar>
             <CommandBar.PrimaryCommands>
-                <AppBarButton Label="Insert" Command="{Binding InserCommand}"/>
-                <AppBarButton Label="Filter" Command="{Binding FilterCommand}"/>
+                <AppBarButton Label="Insert" Icon="Add" Command="{Binding InserCommand}"/>
+                <AppBarButton Label="Filter" Icon="Find" Command="{Binding FilterCommand}"/>
                 <AppBarButton Label="Camera" Icon="WebCam" Command="{Binding AddPictureCommand}"/>
             </CommandBar.PrimaryCommands>
         </CommandBar>

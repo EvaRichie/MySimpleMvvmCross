@@ -57,7 +57,7 @@ namespace MyMvxSimple.Core.ViewModels
 
         private void DoNavigation()
         {
-            ShowViewModel<SqliteSampleViewModel>();
+            ShowViewModel<HttpClientSampleViewModel>();
         }
     }
 }

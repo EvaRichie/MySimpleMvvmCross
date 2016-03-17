@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace MyMvxSimple.Core.ViewModels
 {
@@ -58,6 +59,11 @@ namespace MyMvxSimple.Core.ViewModels
             set { _SearchResults = value; RaisePropertyChanged(() => SearchResults); }
         }
 
+        public ICommand NavigateCommand
+        {
+            get { return new MvxCommand(DoNavigation); }
+        }
+
         public HttpClientSampleViewModel(IBooksService bookService)
         {
             _PageTitle = "This is secound page";
@@ -73,6 +79,11 @@ namespace MyMvxSimple.Core.ViewModels
                 IsLoading = true;
                 _bookService.StartSearchAsync<RootObject>(SearchKeyword, success => { SearchResults = success.items; IsLoading = false; }, fail => { SearchResults = null; IsLoading = false; });
             }, null);
+        }
+
+        private void DoNavigation()
+        {
+            ShowViewModel<SqliteSampleViewModel>();
         }
     }
 }

@@ -24,5 +24,11 @@ namespace MyMvxSimple.Droid.Views
         protected SqliteSampleView(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
         }
+
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
+            SetContentView(Resource.Layout.SqliteSampleViewLayout);
+        }
     }
 }

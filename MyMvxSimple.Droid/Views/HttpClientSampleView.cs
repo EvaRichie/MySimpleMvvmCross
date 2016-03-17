@@ -24,5 +24,11 @@ namespace MyMvxSimple.Droid.Views
         protected HttpClientSampleView(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         {
         }
+
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
+            SetContentView(Resource.Layout.HttpClientSampleViewLayout);
+        }
     }
 }

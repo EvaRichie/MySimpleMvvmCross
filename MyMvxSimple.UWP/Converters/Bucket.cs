@@ -23,6 +23,23 @@ namespace MyMvxSimple.UWP.Converters
     {
     }
 
+    public class StringToUriConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value is string && value?.ToString() != string.Empty)
+            {
+                return new Uri(value.ToString());
+            }
+            return null;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
     public class WhenValueConverter : IValueConverter
     {
         public object When { get; set; }
