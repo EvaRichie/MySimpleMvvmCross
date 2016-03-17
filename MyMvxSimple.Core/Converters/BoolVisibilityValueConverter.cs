@@ -10,7 +10,7 @@ using MvvmCross.Platform;
 
 namespace MyMvxSimple.Core.Converters
 {
-    public class BoolVisibilityConverter : MvxValueConverter<bool>
+    public class BoolVisibilityValueConverter : MvxValueConverter<bool>
     {
         protected override object Convert(bool value, Type targetType, object parameter, CultureInfo culture)
         {

@@ -4,11 +4,11 @@ using MyMvxSimple.Core.Services;
 using MyMvxSimple.Core.Services.DataStore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using System.IO;
 
 namespace MyMvxSimple.Core.ViewModels
 {
@@ -16,7 +16,7 @@ namespace MyMvxSimple.Core.ViewModels
     {
         private readonly IDataService _dataService;
         private readonly IKittenService _kittenService;
-        private readonly IMvxPictureChooserTask _pictureChooserTask;
+        //private readonly IMvxPictureChooserTask _pictureChooserTask;
 
         private string _filter;
 
@@ -92,16 +92,16 @@ namespace MyMvxSimple.Core.ViewModels
             }
         }
 
-        public ICommand AddPictureCommand
-        {
-            get
-            {
-                return new MvxCommand(() =>
-                {
-                    _pictureChooserTask.ChoosePictureFromLibrary(400, 95, OnAvaiable, () => { });
-                });
-            }
-        }
+        //public ICommand AddPictureCommand
+        //{
+        //    get
+        //    {
+        //        return new MvxCommand(() =>
+        //        {
+        //            _pictureChooserTask.ChoosePictureFromLibrary(400, 95, OnAvaiable, () => { });
+        //        });
+        //    }
+        //}
 
         private void OnAvaiable(Stream stream)
         {

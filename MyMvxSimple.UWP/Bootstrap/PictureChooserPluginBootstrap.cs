@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace MyMvxSimple.UWP.Bootstrap
 {
-    public class PictureChooserPluginBootstrap
-        : MvxPluginBootstrapAction<MvvmCross.Plugins.PictureChooser.PluginLoader>
-    {
-    }
+    //public class PictureChooserPluginBootstrap
+    //    : MvxPluginBootstrapAction<MvvmCross.Plugins.PictureChooser.PluginLoader>
+    //{
+    //}
 }

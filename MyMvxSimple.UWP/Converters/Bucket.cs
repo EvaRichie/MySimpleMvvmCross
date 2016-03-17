@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Data;
 
 namespace MyMvxSimple.UWP.Converters
 {
-    public class ManageBoolVisibilityConverter : MvxNativeValueConverter<BoolVisibilityConverter>
+    public class ManageBoolVisibilityConverter : MvxNativeValueConverter<BoolVisibilityValueConverter>
     {
     }
 
