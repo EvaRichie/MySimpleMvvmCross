@@ -26,6 +26,7 @@ namespace MyMvxSimple.Droid.Views
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.HttpClientDetailViewLayout);
+            //MultiLine text view support scroll
             var wtf = FindViewById<TextView>(Resource.Id.WTF);
             wtf.MovementMethod = new ScrollingMovementMethod();
         }
