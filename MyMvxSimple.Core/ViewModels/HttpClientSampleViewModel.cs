@@ -1,6 +1,7 @@
 ﻿using MvvmCross.Core.ViewModels;
 using MyMvxSimple.Core.Services;
 using MyMvxSimple.Core.Services.DataStore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +65,11 @@ namespace MyMvxSimple.Core.ViewModels
             get { return new MvxCommand(DoNavigation); }
         }
 
+        public ICommand SelectedCommand
+        {
+            get { return new MvxCommand<Item>(DoSelceted); }
+        }
+
         public HttpClientSampleViewModel(IBooksService bookService)
         {
             _PageTitle = "This is secound page";
@@ -84,6 +90,12 @@ namespace MyMvxSimple.Core.ViewModels
         private void DoNavigation()
         {
             ShowViewModel<SqliteSampleViewModel>();
+        }
+
+        private void DoSelceted(Item _selectedItem)
+        {
+            var itemJson = JsonConvert.SerializeObject(_selectedItem);
+            ShowViewModel<HttpClientDetailViewModel>(new { jsonObj = itemJson });
         }
     }
 }

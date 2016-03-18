@@ -196,6 +196,7 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
+    <Compile Include="Views\HttpClientDetailView.cs" />
     <Compile Include="Views\HttpClientSampleView.cs" />
     <Compile Include="Views\SplashScreen.cs" />
     <Compile Include="Views\BindingSampleView.cs" />
@@ -225,6 +226,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\SqliteListViewItemTemplate.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\HttpClientDetailViewLayout.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
