@@ -72,6 +72,8 @@
     <Compile Include="Services\SimpleRestService.cs" />
     <Compile Include="Services\DataStore\VolumeInfo.cs" />
     <Compile Include="ViewModels\BindingSampleViewModel.cs" />
+    <Compile Include="ViewModels\Fragment1ViewModel.cs" />
+    <Compile Include="ViewModels\Fragment2ViewModel.cs" />
     <Compile Include="ViewModels\HttpClientDetailViewModel.cs" />
     <Compile Include="ViewModels\LocationHubSampleViewModel.cs" />
     <Compile Include="ViewModels\HttpClientSampleViewModel.cs" />

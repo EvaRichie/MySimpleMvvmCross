@@ -14,9 +14,9 @@ using MvvmCross.Droid.Views;
 namespace MyMvxSimple.Droid.Views
 {
     [Activity(Label = "Splash Screen", MainLauncher = true, Icon = "@drawable/icon")]
-    public class SplashScreen : MvxSplashScreenActivity
+    public class SplashScreenView : MvxSplashScreenActivity
     {
-        public SplashScreen() : base(Resource.Layout.SplashScreenLayout)
+        public SplashScreenView() : base(Resource.Layout.SplashScreenLayout)
         {
         }
     }
