@@ -22,10 +22,10 @@ namespace MyMvxSimple.Droid.Fragments
         //private Toolbar _toolbar;
         //private MvxActionBarDrawerToggle _drawerToggle;
 
-        //protected BaseFragment()
-        //{
-        //    this.RetainInstance = true;
-        //}
+        protected BaseFragment()
+        {
+            this.RetainInstance = true;
+        }
 
         //public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         //{

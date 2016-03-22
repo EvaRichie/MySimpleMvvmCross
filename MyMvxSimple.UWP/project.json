@@ -18,7 +18,8 @@
     "MvvmCross.Plugin.ResourceLoader": "4.0.0",
     "MvvmCross.Plugin.SQLitePCL": "4.0.0",
     "MvvmCross.Plugin.Visibility": "4.0.0",
-    "Newtonsoft.Json": "8.0.3"
+    "Newtonsoft.Json": "8.0.3",
+    "Xam.Plugins.Settings": "2.1.0"
   },
   "frameworks": {
     "uap10.0": {}
