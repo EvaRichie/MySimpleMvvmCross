@@ -11,53 +11,53 @@ namespace MyMvxSimple.Core.ViewModels
 {
     public class BindingSampleViewModel : MvxViewModel
     {
-        //private string _firstName;
+        private string _firstName;
 
-        //public string FirstName
-        //{
-        //    get { return _firstName; }
-        //    set { _firstName = value; RaisePropertyChanged(() => FirstName); RaisePropertyChanged(() => FullName); }
-        //}
+        public string FirstName
+        {
+            get { return _firstName; }
+            set { _firstName = value; RaisePropertyChanged(() => FirstName); RaisePropertyChanged(() => FullName); }
+        }
 
-        //private string _lastName;
+        private string _lastName;
 
-        //public string LastName
-        //{
-        //    get { return _lastName; }
-        //    set { _lastName = value; RaisePropertyChanged(() => LastName); RaisePropertyChanged(() => FullName); }
-        //}
+        public string LastName
+        {
+            get { return _lastName; }
+            set { _lastName = value; RaisePropertyChanged(() => LastName); RaisePropertyChanged(() => FullName); }
+        }
 
-        //public string FullName
-        //{
-        //    get { return string.Format("{1}, {0}", _firstName, _lastName); }
-        //}
+        public string FullName
+        {
+            get { return string.Format("{1}, {0}", _firstName, _lastName); }
+        }
 
-        //private bool _IsVisible;
+        private bool _IsVisible;
 
-        //public bool IsVisible
-        //{
-        //    get { return _IsVisible; }
-        //    set { _IsVisible = value; RaisePropertyChanged(() => IsVisible); }
-        //}
+        public bool IsVisible
+        {
+            get { return _IsVisible; }
+            set { _IsVisible = value; RaisePropertyChanged(() => IsVisible); }
+        }
 
-        //public ICommand SetVisibleCommand
-        //{
-        //    get { return new MvxCommand(DoSetVisible); }
-        //}
+        public ICommand SetVisibleCommand
+        {
+            get { return new MvxCommand(DoSetVisible); }
+        }
 
-        //private void DoSetVisible()
-        //{
-        //    IsVisible = !IsVisible;
-        //}
+        private void DoSetVisible()
+        {
+            IsVisible = !IsVisible;
+        }
 
-        //public ICommand NavigateToSecoundCommand
-        //{
-        //    get { return new MvxCommand(DoNavigation); }
-        //}
+        public ICommand NavigateToSecoundCommand
+        {
+            get { return new MvxCommand(DoNavigation); }
+        }
 
-        //private void DoNavigation()
-        //{
-        //    ShowViewModel<HttpClientSampleViewModel>();
-        //}
+        private void DoNavigation()
+        {
+            ShowViewModel<HttpClientSampleViewModel>();
+        }
     }
 }

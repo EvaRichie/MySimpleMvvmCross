@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace MyMvxSimple.WPF.Converters
 {
-    public class ManageBoolVisibilityConverter : MvxNativeValueConverter<BoolVisibilityConverter>
+    public class ManageBoolVisibilityConverter : MvxNativeValueConverter<BoolVisibilityValueConverter>
     {
     }
 }

@@ -4,6 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:ic="http://schemas.microsoft.com/expression/2010/interactions"
     xmlns:local="clr-namespace:MyMvxSimple.WPF.Views"
     xmlns:mvxView="clr-namespace:MvvmCross.Wpf.Views;assembly=MvvmCross.Wpf"
     mc:Ignorable="d">
@@ -17,19 +19,31 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="{Binding PageTitle}"/>
         <TextBox Grid.Row="1" Text="{Binding SearchKeyword, Mode=TwoWay}" TextChanged="TextBox_TextChanged"/>
-        <ListView Grid.Row="3" ItemsSource="{Binding SearchResults}">
+        <ListView Grid.Row="3" ItemsSource="{Binding SearchResults}" SelectionMode="Single">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="{Binding volumeInfo.title}"/>
-                        <TextBlock Grid.Row="1" Text="{Binding volumeInfo.subtitle}"/>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="{Binding volumeInfo.imageLinks.smallThumbnail}"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="{Binding volumeInfo.title}"/>
+                            <TextBlock Grid.Row="1" Text="{Binding volumeInfo.subtitle}"/>
+                        </Grid>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectedCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </ListView>
         <ProgressBar Grid.Row="1" Grid.ColumnSpan="2" IsIndeterminate="{Binding IsLoading}" Visibility="{Binding IsLoading, Converter={StaticResource M_BoolVisibilityCvt}, ConverterParameter=reverse}" IsVisibleChanged="ProgressBar_IsVisibleChanged"/>
     </Grid>

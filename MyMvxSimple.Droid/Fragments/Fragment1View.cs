@@ -10,10 +10,13 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using MyMvxSimple.Core.ViewModels;
+using MvvmCross.Droid.FullFragging.Attributes;
 
 namespace MyMvxSimple.Droid.Fragments
 {
-    public class Fragment1View : Fragment
+    //[MvxFragment(typeof(BindingSampleViewModel),Resource.Id.con)]
+    public class Fragment1View : BaseFragment<BindingSampleViewModel>
     {
         public override void OnCreate(Bundle savedInstanceState)
         {
