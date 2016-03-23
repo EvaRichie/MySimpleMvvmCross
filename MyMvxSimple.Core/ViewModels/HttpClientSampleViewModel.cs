@@ -60,6 +60,14 @@ namespace MyMvxSimple.Core.ViewModels
             set { _SearchResults = value; RaisePropertyChanged(() => SearchResults); }
         }
 
+        private Item _SelectedItem;
+
+        public Item SelectedItem
+        {
+            get { return _SelectedItem; }
+            set { _SelectedItem = value; RaisePropertyChanged(() => SelectedItem); }
+        }
+
         public ICommand NavigateCommand
         {
             get { return new MvxCommand(DoNavigation); }
@@ -92,10 +100,18 @@ namespace MyMvxSimple.Core.ViewModels
             ShowViewModel<SqliteSampleViewModel>();
         }
 
-        private void DoSelceted(Item _selectedItem)
+        private void DoSelceted(Item selectedItem)
         {
-            var itemJson = JsonConvert.SerializeObject(_selectedItem);
-            ShowViewModel<HttpClientDetailViewModel>(new { jsonObj = itemJson });
+            if (selectedItem != null)
+            {
+                var itemJson = JsonConvert.SerializeObject(selectedItem);
+                ShowViewModel<HttpClientDetailViewModel>(new { jsonObj = itemJson });
+            }
+            if (_SelectedItem != null)
+            {
+                var itemJson = JsonConvert.SerializeObject(_SelectedItem);
+                ShowViewModel<HttpClientDetailViewModel>(new { jsonObj = itemJson });
+            }
         }
     }
 }

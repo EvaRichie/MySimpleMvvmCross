@@ -6,5 +6,6 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <cvt:ManageBoolVisibilityConverter x:Key="M_BoolVisibilityCvt"/>
+        <cvt:ManageStringListToStringConverter x:Key="M_ListStringTStringCvt"/>
     </Application.Resources>
 </Application>

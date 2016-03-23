@@ -23,6 +23,12 @@ namespace MyMvxSimple.WPF.Views
         public HttpClientDetailView()
         {
             InitializeComponent();
+            this.Loaded += HttpClientDetailView_Loaded;
+        }
+
+        private void HttpClientDetailView_Loaded(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(DataContext.ToString());
         }
     }
 }

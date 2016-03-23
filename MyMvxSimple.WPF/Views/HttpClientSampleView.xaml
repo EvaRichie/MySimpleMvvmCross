@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="{Binding PageTitle}"/>
         <TextBox Grid.Row="1" Text="{Binding SearchKeyword, Mode=TwoWay}" TextChanged="TextBox_TextChanged"/>
-        <ListView Grid.Row="3" ItemsSource="{Binding SearchResults}" SelectionMode="Single">
+        <ListView Grid.Row="3" SelectionMode="Single" SelectedItem="{Binding SelectedItem}" ItemsSource="{Binding SearchResults}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>

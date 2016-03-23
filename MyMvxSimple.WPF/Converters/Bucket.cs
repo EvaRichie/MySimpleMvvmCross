@@ -12,4 +12,8 @@ namespace MyMvxSimple.WPF.Converters
     public class ManageBoolVisibilityConverter : MvxNativeValueConverter<BoolVisibilityValueConverter>
     {
     }
+
+    public class ManageStringListToStringConverter :MvxNativeValueConverter<StringListToStringValueConverter>
+    {
+    }
 }
