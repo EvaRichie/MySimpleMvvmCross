@@ -6,28 +6,38 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvxView="using:MvvmCross.WindowsUWP.Views"
+    xmlns:mvxModel="using:MyMvxSimple.Core.Services.DataStore"
+    xmlns:i="using:Microsoft.Xaml.Interactivity" 
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:cmd="using:MyMvxSimple.UWP.Commands"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.Resources>
+            <cmd:ReplayCommand x:Key="Cmd"/>
+            <DataTemplate x:DataType="mvxModel:Item" x:Key="Dt1">
+                <RelativePanel>
+                    <Image x:Name="BookImg" Width="80" Height="80" Source="{x:Bind volumeInfo.imageLinks.smallThumbnail, Converter={StaticResource C_StringToUriCvt}}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True"/>
+                    <TextBlock x:Name="BookTitle" Text="{x:Bind volumeInfo.title}" RelativePanel.RightOf="BookImg"/>
+                    <TextBlock x:Name="BookSubTitle" Grid.Row="1" Text="{x:Bind volumeInfo.subtitle}" RelativePanel.RightOf="BookImg" RelativePanel.Below="BookTitle"/>
+                </RelativePanel>
+            </DataTemplate>
+        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="{Binding PageTitle}" Foreground="Red"/>
+        <TextBlock Grid.Row="0" Text="{x:Bind pageVM.PageTitle}" Foreground="Red"/>
         <TextBox Grid.Row="1" Text="{Binding SearchKeyword, Mode=TwoWay}" TextChanged="TextBox_TextChanged"/>
-        <ListView Grid.Row="2" ItemsSource="{Binding SearchResults}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <RelativePanel>
-                        <Image x:Name="BookImg" Width="80" Height="80" Source="{Binding volumeInfo.imageLinks.smallThumbnail, Converter={StaticResource StringToUriCvt}}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True"/>
-                        <TextBlock x:Name="BookTitle" Text="{Binding volumeInfo.title}" RelativePanel.RightOf="BookImg"/>
-                        <TextBlock x:Name="BookSubTitle" Grid.Row="1" Text="{Binding volumeInfo.subtitle}" RelativePanel.RightOf="BookImg" RelativePanel.Below="BookTitle"/>
-                    </RelativePanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+        <ListView Grid.Row="2" ItemsSource="{Binding SearchResults, Mode=OneWay}" ItemTemplate="{StaticResource Dt1}" SelectionMode="Single" IsItemClickEnabled="False">
+            <i:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="SelectionChanged">
+                    <core:InvokeCommandAction Command="{StaticResource Cmd}"/>
+                </core:EventTriggerBehavior>
+            </i:Interaction.Behaviors>
         </ListView>
-        <ProgressRing Grid.Row="1" Grid.RowSpan="2" IsActive="{Binding IsLoading}" Visibility="{Binding IsLoading, Converter={StaticResource M_BoolVisibilityCvt}, ConverterParameter=reverse}"/>
+        <ProgressRing Grid.Row="1" Grid.RowSpan="2" IsActive="{x:Bind pageVM.IsLoading}" Visibility="{x:Bind pageVM.IsLoading, Converter={StaticResource M_BoolVisibilityCvt}, ConverterParameter=reverse}"/>
     </Grid>
 
     <Page.BottomAppBar>

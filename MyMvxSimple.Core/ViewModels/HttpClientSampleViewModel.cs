@@ -12,9 +12,11 @@ using System.Windows.Input;
 
 namespace MyMvxSimple.Core.ViewModels
 {
-    public class HttpClientSampleViewModel : MvxViewModel
+    public partial class HttpClientSampleViewModel : MvxViewModel
     {
         private readonly IBooksService _bookService;
+
+        private bool _IsTyping = false;
 
         private bool _IsLoading;
 
@@ -49,7 +51,15 @@ namespace MyMvxSimple.Core.ViewModels
         public string SearchKeyword
         {
             get { return _SearchKeyword; }
-            set { _SearchKeyword = value; RaisePropertyChanged(() => SearchKeyword); Update(); }
+            set
+            {
+                if (_SearchKeyword != value)
+                {
+                    _SearchKeyword = value;
+                    RaisePropertyChanged(() => SearchKeyword);
+                    Update();
+                }
+            }
         }
 
         private List<Item> _SearchResults;
@@ -86,13 +96,12 @@ namespace MyMvxSimple.Core.ViewModels
 
         private void Update()
         {
-            if (IsLoading)
-                return;
-            Task.Delay(TimeSpan.FromSeconds(1.0)).ContinueWith((t, o) =>
+            Task.Run(async () =>
             {
-                IsLoading = true;
-                _bookService.StartSearchAsync<RootObject>(SearchKeyword, success => { SearchResults = success.items; IsLoading = false; }, fail => { SearchResults = null; IsLoading = false; });
-            }, null);
+                await Task.Delay(1000);
+                var searchResult = await _bookService.StartSearchAsync<RootObject>(SearchKeyword).ConfigureAwait(false);
+                SearchResults = searchResult?.items;
+            });
         }
 
         private void DoNavigation()

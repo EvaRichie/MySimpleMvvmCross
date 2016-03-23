@@ -25,6 +25,8 @@ namespace MyMvxSimple.UWP.Views
     /// </summary>
     public sealed partial class HttpClientSampleView : MvxWindowsPage
     {
+        public HttpClientSampleViewModel pageVM { get; set; }
+
         public new HttpClientSampleViewModel ViewModel
         {
             get { return (HttpClientSampleViewModel)base.ViewModel; }
@@ -34,6 +36,12 @@ namespace MyMvxSimple.UWP.Views
         public HttpClientSampleView()
         {
             this.InitializeComponent();
+            this.Loaded += Page_Loaded;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            pageVM = ViewModel;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

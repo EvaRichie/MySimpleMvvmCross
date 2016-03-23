@@ -4,6 +4,7 @@
     "Microsoft.ApplicationInsights.PersistenceChannel": "1.2.3",
     "Microsoft.ApplicationInsights.WindowsApps": "1.1.1",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
+    "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
     "modernhttpclient": "2.4.2",
     "MvvmCross": "4.1.0",
     "MvvmCross.Binding": "4.1.0",

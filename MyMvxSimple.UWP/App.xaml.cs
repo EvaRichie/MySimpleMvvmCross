@@ -100,9 +100,11 @@ namespace MyMvxSimple.UWP
         {
             var rootFrame = Window.Current.Content as Frame;
             SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = rootFrame.CanGoBack ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
-            if (rootFrame.CanGoBack)
+            if (rootFrame.CanGoBack && !e.Handled)
+            {
                 rootFrame.GoBack();
-            e.Handled = true;
+                e.Handled = true;
+            }
         }
 
         /// <summary>

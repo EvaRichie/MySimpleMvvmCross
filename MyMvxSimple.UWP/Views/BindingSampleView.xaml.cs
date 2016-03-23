@@ -26,15 +26,19 @@ namespace MyMvxSimple.UWP.Views
     /// </summary>
     public sealed partial class BindingSampleView : MvxWindowsPage
     {
+        public BindingSampleViewModel bindingVM;
+
         public new BindingSampleViewModel ViewModel
         {
             get { return (BindingSampleViewModel)base.ViewModel; }
             set { base.ViewModel = value; }
         }
 
+
         public BindingSampleView()
         {
             this.InitializeComponent();
+            bindingVM = ViewModel;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

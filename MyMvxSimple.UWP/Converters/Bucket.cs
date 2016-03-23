@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace MyMvxSimple.UWP.Converters
 {
@@ -30,6 +32,26 @@ namespace MyMvxSimple.UWP.Converters
             if (value is string && value?.ToString() != string.Empty)
             {
                 return new Uri(value.ToString());
+            }
+            return null;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class C_StringToUriConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value is string && value?.ToString() != string.Empty)
+            {
+                var imgSrc = new BitmapImage();
+                imgSrc.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                imgSrc.UriSource = new Uri(value.ToString());
+                return imgSrc;
             }
             return null;
         }

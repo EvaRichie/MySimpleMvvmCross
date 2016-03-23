@@ -102,6 +102,7 @@
   <ItemGroup>
     <Compile Include="Bootstrap\PictureChooserPluginBootstrap.cs" />
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
+    <Compile Include="Commands\ReplayCommand.cs" />
     <Compile Include="Helpers\AdapterInfo.cs" />
     <Compile Include="Helpers\AdaptersHelper.cs" />
     <Compile Include="App.xaml.cs">

@@ -37,14 +37,16 @@ namespace MyMvxSimple.Core.Services
 
         public void StartSearch(string whatFor, Action<RootObject> success, Action<Exception> error)
         {
+            System.Diagnostics.Debug.WriteLine("Searching for {0}", whatFor);
             var address = string.Format("https://www.googleapis.com/books/v1/volumes?q={0}", Uri.EscapeUriString(whatFor));
             _httpClientService.Download(address, success, error);
         }
 
-        public async void StartSearchAsync<T>(string whatFor, Action<T> successAction, Action<Exception> exceptionAction)
+        public async Task StartSearchAsync<T>(string whatFor, Action<T> successAction, Action<Exception> exceptionAction)
         {
+            System.Diagnostics.Debug.WriteLine("Searching for {0}", whatFor);
             var address = string.Format("https://www.googleapis.com/books/v1/volumes?q={0}", Uri.EscapeUriString(whatFor));
-            var asyncResult = await _httpClientService.DownloadAsync<T>(address);
+            var asyncResult = await _httpClientService.DownloadAsync<T>(address).ConfigureAwait(continueOnCapturedContext: false);
             if (asyncResult != null && asyncResult is T)
             {
                 successAction((T)asyncResult);
@@ -53,6 +55,14 @@ namespace MyMvxSimple.Core.Services
             {
                 exceptionAction((Exception)asyncResult);
             }
+        }
+
+        public async Task<T> StartSearchAsync<T>(string whatFor)
+        {
+            System.Diagnostics.Debug.WriteLine("Searching for {0}", whatFor);
+            var address = string.Format("https://www.googleapis.com/books/v1/volumes?q={0}", Uri.EscapeUriString(whatFor));
+            var asyncResult = await _httpClientService.DownloadAsync<T>(address).ConfigureAwait(false);
+            return (T)asyncResult;
         }
     }
 }
