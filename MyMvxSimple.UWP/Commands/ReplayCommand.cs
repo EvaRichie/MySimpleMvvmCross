@@ -1,5 +1,6 @@
 ﻿using MyMvxSimple.Core.ViewModels;
 using MyMvxSimple.UWP.Views;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,13 @@ namespace MyMvxSimple.UWP.Commands
                 if (rootFrame != null && rootFrame.Content is HttpClientSampleView)
                 {
                     var viewModel = (rootFrame.Content as HttpClientSampleView).DataContext as HttpClientSampleViewModel;
-                    
+                    var args = (parameter as SelectionChangedEventArgs).AddedItems.FirstOrDefault();
+                    if (args != null && args is Core.Services.DataStore.Item)
+                    {
+                        viewModel.UWP_DoSelect((Core.Services.DataStore.Item)args);
+                        //rootFrame.Navigate(typeof(HttpClientDetailView));
+                        //rootFrame.Navigate(typeof(HttpClientDetailView), JsonConvert.SerializeObject(args));
+                    }
                 }
             }
         }

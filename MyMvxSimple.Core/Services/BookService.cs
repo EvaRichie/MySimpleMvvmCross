@@ -62,7 +62,9 @@ namespace MyMvxSimple.Core.Services
             System.Diagnostics.Debug.WriteLine("Searching for {0}", whatFor);
             var address = string.Format("https://www.googleapis.com/books/v1/volumes?q={0}", Uri.EscapeUriString(whatFor));
             var asyncResult = await _httpClientService.DownloadAsync<T>(address).ConfigureAwait(false);
-            return (T)asyncResult;
+            if (asyncResult is T)
+                return (T)asyncResult;
+            return default(T);
         }
     }
 }

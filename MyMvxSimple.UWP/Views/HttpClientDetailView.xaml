@@ -1,0 +1,25 @@
+﻿<mvxView:MvxWindowsPage
+    x:Class="MyMvxSimple.UWP.Views.HttpClientDetailView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyMvxSimple.UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvxView="using:MvvmCross.WindowsUWP.Views"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="240"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Width="240" Height="240" Source="{Binding SelectedItem.volumeInfo.imageLinks.thumbnail}"/>
+        <TextBlock Grid.Row="1" Style="{ThemeResource TitleTextBlockStyle}" Text="{Binding SelectedItem.volumeInfo.title}"/>
+        <TextBlock Grid.Row="2" Style="{ThemeResource SubtitleTextBlockStyle}" Text="{Binding SelectedItem.volumeInfo.subtitle}"/>
+        <TextBlock Grid.Row="3" Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding SelectedItem.volumeInfo.authors, Converter={StaticResource M_StringListToStrCvt}}"/>
+        <TextBlock Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding SelectedItem.volumeInfo.description}"  TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+    </Grid>
+</mvxView:MvxWindowsPage>

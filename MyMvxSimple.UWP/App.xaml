@@ -13,6 +13,7 @@
         <cvt:ManageReverseBoolConverter x:Key="M_ReverseBoolCvt"/>
         <cvt:ManageByteArrayImageConverter x:Key="M_BytesImageCvt"/>
         <cvt:StringToUriConverter x:Key="StringToUriCvt"/>
+        <cvt:ManageStringListToStringConverter x:Key="M_StringListToStrCvt"/>
         <cvt:C_StringToUriConverter x:Key="C_StringToUriCvt"/>
         <cvt:WhenValueConverter x:Key="WhenValueCvt">
             <cvt:WhenValueConverter.When>

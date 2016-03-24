@@ -9,14 +9,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.ComponentModel;
 
 namespace MyMvxSimple.Core.ViewModels
 {
-    public partial class HttpClientSampleViewModel : MvxViewModel
+    public partial class HttpClientSampleViewModel : MvxViewModel, IMvxNotifyPropertyChanged
     {
         private readonly IBooksService _bookService;
-
-        private bool _IsTyping = false;
+        //private readonly SemaphoreSlim mutex = new SemaphoreSlim(1);
 
         private bool _IsLoading;
 
@@ -57,7 +57,7 @@ namespace MyMvxSimple.Core.ViewModels
                 {
                     _SearchKeyword = value;
                     RaisePropertyChanged(() => SearchKeyword);
-                    Update();
+                    UpdateSearchResult();
                 }
             }
         }
@@ -94,17 +94,30 @@ namespace MyMvxSimple.Core.ViewModels
             _bookService = bookService;
         }
 
-        private void Update()
+        private void UpdateSearchResult()
         {
             Task.Run(async () =>
             {
-                await Task.Delay(1000);
-                var searchResult = await _bookService.StartSearchAsync<RootObject>(SearchKeyword).ConfigureAwait(false);
-                SearchResults = searchResult?.items;
+                try
+                {
+                    //await mutex.WaitAsync().ConfigureAwait(false);
+                    await Task.Delay(1000);
+                    var searchResult = await _bookService.StartSearchAsync<RootObject>(SearchKeyword).ConfigureAwait(false);
+                    SearchResults = searchResult?.items;
+                }
+                finally
+                {
+                    //mutex.Release();
+                }
             });
         }
 
         private void DoNavigation()
+        {
+            ShowViewModel<SqliteSampleViewModel>();
+        }
+
+        public void UWP_DoNavigation()
         {
             ShowViewModel<SqliteSampleViewModel>();
         }
@@ -119,6 +132,15 @@ namespace MyMvxSimple.Core.ViewModels
             if (_SelectedItem != null)
             {
                 var itemJson = JsonConvert.SerializeObject(_SelectedItem);
+                ShowViewModel<HttpClientDetailViewModel>(new { jsonObj = itemJson });
+            }
+        }
+
+        public void UWP_DoSelect(Item selectedItem)
+        {
+            if (selectedItem != null)
+            {
+                var itemJson = JsonConvert.SerializeObject(selectedItem);
                 ShowViewModel<HttpClientDetailViewModel>(new { jsonObj = itemJson });
             }
         }

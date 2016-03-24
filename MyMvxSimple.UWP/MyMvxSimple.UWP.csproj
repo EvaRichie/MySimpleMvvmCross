@@ -122,6 +122,9 @@
     <Compile Include="Views\BindingSampleView.xaml.cs">
       <DependentUpon>BindingSampleView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\HttpClientDetailView.xaml.cs">
+      <DependentUpon>HttpClientDetailView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HttpClientSampleView.xaml.cs">
       <DependentUpon>HttpClientSampleView.xaml</DependentUpon>
     </Compile>
@@ -154,6 +157,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\BindingSampleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HttpClientDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
