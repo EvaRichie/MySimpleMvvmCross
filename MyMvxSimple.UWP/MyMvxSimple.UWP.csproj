@@ -102,7 +102,10 @@
   <ItemGroup>
     <Compile Include="Bootstrap\PictureChooserPluginBootstrap.cs" />
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
-    <Compile Include="Commands\ReplayCommand.cs" />
+    <Compile Include="Commands\ListViewItemClickCommand.cs" />
+    <Compile Include="Commands\ListViewItemSelectCommand.cs" />
+    <Compile Include="Commands\TextBoxTextChangCommand.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Helpers\AdapterInfo.cs" />
     <Compile Include="Helpers\AdaptersHelper.cs" />
     <Compile Include="App.xaml.cs">

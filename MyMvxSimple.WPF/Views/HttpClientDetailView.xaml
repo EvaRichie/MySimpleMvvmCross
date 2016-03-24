@@ -11,8 +11,8 @@
             <Image Width="240" Height="240" Source="{Binding SelectedItem.volumeInfo.imageLinks.thumbnail}"/>
             <TextBlock Text="{Binding SelectedItem.volumeInfo.title}"/>
             <TextBlock Text="{Binding SelectedItem.volumeInfo.subtitle}"/>
-            <TextBlock Text="{Binding SelectedItem.volumeInfo.authors, Converter={StaticResource M_ListStringTStringCvt}}"/>
-            <TextBlock Text="{Binding SelectedItem.volumeInfo.description}"/>
+            <TextBlock Text="{Binding SelectedItem.volumeInfo.authors, Converter={StaticResource M_ListStringTStringCvt}}" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+            <TextBlock Text="{Binding SelectedItem.volumeInfo.description}" TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
         </StackPanel>
     </Grid>
 </mvxView:MvxWpfView>

@@ -14,7 +14,9 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.Resources>
-            <cmd:ReplayCommand x:Key="Cmd"/>
+            <cmd:ListViewItemClickCommand x:Key="ClickedCommand"/>
+            <cmd:ListViewItemSelectCommand x:Key="SelectedCommand"/>
+            <cmd:TextBoxTextChangCommand x:Key="TextChangedCommand"/>
             <DataTemplate x:DataType="mvxModel:Item" x:Key="Dt1">
                 <RelativePanel>
                     <Image x:Name="BookImg" Width="80" Height="80" Source="{x:Bind volumeInfo.imageLinks.smallThumbnail, Converter={StaticResource C_StringToUriCvt}}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignTopWithPanel="True"/>
@@ -29,11 +31,24 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="{x:Bind pageVM.PageTitle}" Foreground="Red"/>
-        <TextBox Grid.Row="1" Text="{Binding SearchKeyword, Mode=TwoWay}" TextChanged="TextBox_TextChanged"/>
-        <ListView Grid.Row="2" ItemsSource="{Binding SearchResults, Mode=OneWay}" ItemTemplate="{StaticResource Dt1}" SelectionMode="Single" IsItemClickEnabled="False">
+        <TextBox x:Name="searchTbx" Grid.Row="1" Text="{Binding SearchKeyword, Mode=TwoWay}">
+            <i:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="TextChanged">
+                    <core:InvokeCommandAction Command="{StaticResource TextChangedCommand}" CommandParameter="{Binding Text, ElementName=searchTbx}"/>
+                </core:EventTriggerBehavior>
+            </i:Interaction.Behaviors>
+        </TextBox>
+        <!--<ListView Grid.Row="2" ItemsSource="{Binding SearchResults, Mode=OneWay}" ItemTemplate="{StaticResource Dt1}" SelectionMode="Single" IsItemClickEnabled="False">
             <i:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="SelectionChanged">
-                    <core:InvokeCommandAction Command="{StaticResource Cmd}"/>
+                    <core:InvokeCommandAction Command="{StaticResource SelectedCommand}"/>
+                </core:EventTriggerBehavior>
+            </i:Interaction.Behaviors>
+        </ListView>-->
+        <ListView Grid.Row="2" ItemsSource="{Binding SearchResults, Mode=OneWay}" ItemTemplate="{StaticResource Dt1}" SelectionMode="None" IsItemClickEnabled="True">
+            <i:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="ItemClick">
+                    <core:InvokeCommandAction Command="{StaticResource ClickedCommand}"/>
                 </core:EventTriggerBehavior>
             </i:Interaction.Behaviors>
         </ListView>

@@ -43,10 +43,5 @@ namespace MyMvxSimple.UWP.Views
         {
             pageVM = ViewModel;
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            ViewModel.SearchKeyword = (sender as TextBox).Text;
-        }
     }
 }
