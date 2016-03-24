@@ -16,10 +16,11 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image Grid.Row="0" Width="240" Height="240" Source="{Binding SelectedItem.volumeInfo.imageLinks.thumbnail}"/>
-        <TextBlock Grid.Row="1" Style="{ThemeResource TitleTextBlockStyle}" Text="{Binding SelectedItem.volumeInfo.title}"/>
-        <TextBlock Grid.Row="2" Style="{ThemeResource SubtitleTextBlockStyle}" Text="{Binding SelectedItem.volumeInfo.subtitle}"/>
-        <TextBlock Grid.Row="3" Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding SelectedItem.volumeInfo.authors, Converter={StaticResource M_StringListToStrCvt}}"/>
-        <TextBlock Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" Text="{Binding SelectedItem.volumeInfo.description}"  TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
+        <Image Grid.Row="0" Width="240" Height="240" Source="{x:Bind pageVM.SelectedItem.volumeInfo.imageLinks.thumbnail}"/>
+        <!--<TextBlock Grid.Row="1" Style="{ThemeResource TitleTextBlockStyle}" Text="{Binding SelectedItem.volumeInfo.title}"/>-->
+        <TextBlock Grid.Row="1" Style="{ThemeResource TitleTextBlockStyle}" Text="{x:Bind pageVM.SelectedItem.volumeInfo.title}"/>
+        <TextBlock Grid.Row="2" Style="{ThemeResource SubtitleTextBlockStyle}" Text="{x:Bind pageVM.SelectedItem.volumeInfo.subtitle}"/>
+        <TextBlock Grid.Row="3" Style="{ThemeResource BaseTextBlockStyle}" Text="{x:Bind pageVM.SelectedItem.volumeInfo.authors, Converter={StaticResource M_StringListToStrCvt}}"/>
+        <TextBlock Grid.Row="4" Style="{ThemeResource BaseTextBlockStyle}" Text="{x:Bind pageVM.SelectedItem.volumeInfo.description}"  TextWrapping="Wrap" TextTrimming="WordEllipsis"/>
     </Grid>
 </mvxView:MvxWindowsPage>

@@ -23,13 +23,19 @@ namespace MyMvxSimple.Core.Services
         {
             try
             {
-                using (var httpClient = new HttpClient(new NativeMessageHandler()))
-                using (var response = await httpClient.GetAsync(requestUriString))
+                using (var handler = new NativeMessageHandler())
                 {
-                    response.EnsureSuccessStatusCode();
-                    var resultStr = await response.Content.ReadAsStringAsync();
-                    var jsonObj = Deserialize<T>(resultStr);
-                    return jsonObj;
+                    if (handler.SupportsAutomaticDecompression)
+                        handler.AutomaticDecompression = System.Net.DecompressionMethods.GZip | System.Net.DecompressionMethods.Deflate;
+                    using (var httpClient = new HttpClient(handler))
+                    using (var response = await httpClient.GetAsync(requestUriString))
+                    {
+
+                        response.EnsureSuccessStatusCode();
+                        var resultStr = await response.Content.ReadAsStringAsync();
+                        var jsonObj = Deserialize<T>(resultStr);
+                        return jsonObj;
+                    }
                 }
             }
             catch (HttpRequestException httpEx)

@@ -35,6 +35,14 @@ namespace MyMvxSimple.UWP.Views
         public HttpClientDetailView()
         {
             this.InitializeComponent();
+            this.Loaded += Page_Loaded;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            // After ViewModel is set also update the pageVM and all compile bindings.
+            pageVM = ViewModel;
+            this.Bindings.Update();
         }
     }
 }
